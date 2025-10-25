@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(winget search:*)",
+      "WebFetch(domain:derivative.ca)",
+      "WebSearch",
+      "WebFetch(domain:ninite.com)",
+      "WebFetch(domain:h264encoder.com)",
+      "WebFetch(domain:www.softpedia.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
