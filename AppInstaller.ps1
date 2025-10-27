@@ -13,9 +13,13 @@
 #   InstallerType can be: exe, msi, zip
 #   SilentArgs: /S, /SILENT, /VERYSILENT (for exe) or /quiet, /qn (for msi)
 #
+# For COMMAND apps (runs PowerShell commands):
+#   @{Name="App Name"; Type="command"; Command="your-command --flags"; Description="Short description"}
+#
 $AppList = @(
     @{Name="TouchDesigner"; Type="direct"; DownloadURL="https://download.derivative.ca/TouchDesigner.2023.12480.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="Visual development platform"},
     @{Name="Inkscape"; Type="winget"; ID="Inkscape.Inkscape"; Description="Vector graphics editor"},
+    @{Name="Blender"; Type="winget"; ID="BlenderFoundation.Blender"; Description="3D creation suite"},
     @{Name="Visual Studio Code"; Type="winget"; ID="Microsoft.VisualStudioCode"; Description="Code editor"},
     @{Name="Sublime Text"; Type="winget"; ID="SublimeHQ.SublimeText.4"; Description="Text editor"},
     @{Name="Notion"; Type="winget"; ID="Notion.Notion"; Description="Productivity and notes"},
@@ -27,9 +31,40 @@ $AppList = @(
     @{Name="FFmpeg"; Type="winget"; ID="Gyan.FFmpeg"; Description="Multimedia framework"},
     @{Name="HandBrake"; Type="winget"; ID="HandBrake.HandBrake"; Description="Video transcoder"},
     @{Name="Upscayl"; Type="winget"; ID="Upscayl.Upscayl"; Description="AI image upscaler"},
-    @{Name="H.264 Encoder"; Type="direct"; DownloadURL="https://file1.softsea.com/get.php?file=h264encoder_setup.exe"; InstallerType="exe"; SilentArgs="/S"; Description="Video encoder to H.264 format"}
+    @{Name="H.264 Encoder"; Type="direct"; DownloadURL="https://file1.softsea.com/get.php?file=h264encoder_setup.exe"; InstallerType="exe"; SilentArgs="/S"; Description="Video encoder to H.264 format"},
+
+    # Development Tools
+    @{Name="Git"; Type="winget"; ID="Git.Git"; Description="Version control system"},
+    @{Name="GitHub Desktop"; Type="winget"; ID="GitHub.GitHubDesktop"; Description="Git GUI client"},
+    @{Name="Python 3.13"; Type="winget"; ID="Python.Python.3.13"; Description="Python programming language"},
+    @{Name="Arduino IDE"; Type="winget"; ID="ArduinoSA.IDE.stable"; Description="Arduino development environment"},
+
+    # System Tools
+    @{Name="HWiNFO"; Type="winget"; ID="REALiX.HWiNFO"; Description="Hardware information and monitoring"},
+    @{Name="WSL"; Type="command"; Command="wsl --install --no-distribution"; Description="Windows Subsystem for Linux (no distro)"},
+
+    # Remote Access
+    @{Name="AnyDesk"; Type="winget"; ID="AnyDesk.AnyDesk"; Description="Remote desktop software"},
+
+    # Audio Production
+    @{Name="Voicemeeter"; Type="winget"; ID="VB-Audio.Voicemeeter"; Description="Virtual audio mixer"},
+    @{Name="ASIO4ALL"; Type="winget"; ID="MichaelTippach.ASIO4ALL"; Description="Universal ASIO driver"},
+    @{Name="foobar2000"; Type="winget"; ID="PeterPawlowski.foobar2000"; Description="Advanced audio player"},
+    @{Name="Expert Sleepers ES-9 Driver"; Type="direct"; DownloadURL="https://www.expert-sleepers.co.uk/downloads/drivers/ExpertSleepers_USBAudio_v5.72.0_2024-11-13_setup.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="ES-9 USB audio interface driver"},
+
+    # Networking & File Sharing
+    @{Name="Angry IP Scanner"; Type="winget"; ID="angryziber.AngryIPScanner"; Description="Network scanner"},
+    @{Name="LocalSend"; Type="winget"; ID="LocalSend.LocalSend"; Description="Local network file sharing"},
+
+    # Hardware & Drivers
+    @{Name="Azure Kinect SDK"; Type="direct"; DownloadURL="https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="Azure Kinect sensor drivers and SDK"}
+
+    # Ableton Live - Requires manual download from Ableton account
+    # To add Ableton: Download installer from https://www.ableton.com/account/ then uncomment and update the line below:
+    # @{Name="Ableton Live"; Type="direct"; DownloadURL="PATH_TO_YOUR_DOWNLOADED_INSTALLER.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="Digital audio workstation"}
+
     # Add more apps here following the format above
-    # Note: H.264 Encoder silent args may need adjustment. Try /S, /SILENT, or /VERYSILENT if installation fails
+    # Note: Some installers may need different silent args. Try /S, /SILENT, or /VERYSILENT if installation fails
 )
 
 # ============================================
@@ -240,6 +275,48 @@ function Install-AppViaDirect {
     }
 }
 
+function Install-AppViaCommand {
+    param($App, $StatusLabel, $LogBox)
+
+    $appName = $App.Name
+    $command = $App.Command
+
+    Write-Log "Starting command installation: $appName"
+    Write-Log "Command: $command"
+
+    try {
+        $LogBox.AppendText("Running command...`r`n")
+        $LogBox.SelectionStart = $LogBox.Text.Length
+        $LogBox.ScrollToCaret()
+        [System.Windows.Forms.Application]::DoEvents()
+
+        # Execute the command
+        $process = Start-Process -FilePath "powershell.exe" -ArgumentList "-NoProfile", "-Command", $command -Wait -NoNewWindow -PassThru
+
+        if ($process.ExitCode -eq 0) {
+            Write-Log "$appName installed successfully" "SUCCESS"
+            $LogBox.AppendText("[OK] $appName installed successfully`r`n")
+            $LogBox.SelectionStart = $LogBox.Text.Length
+            $LogBox.ScrollToCaret()
+            return $true
+        }
+        else {
+            Write-Log "$appName installation failed with exit code: $($process.ExitCode)" "ERROR"
+            $LogBox.AppendText("[FAIL] $appName failed (Exit Code: $($process.ExitCode))`r`n")
+            $LogBox.SelectionStart = $LogBox.Text.Length
+            $LogBox.ScrollToCaret()
+            return $false
+        }
+    }
+    catch {
+        Write-Log "$appName installation error: $($_.Exception.Message)" "ERROR"
+        $LogBox.AppendText("[ERROR] $appName error: $($_.Exception.Message)`r`n")
+        $LogBox.SelectionStart = $LogBox.Text.Length
+        $LogBox.ScrollToCaret()
+        return $false
+    }
+}
+
 function Install-App {
     param($App, $StatusLabel, $ProgressBar, $LogBox)
 
@@ -259,6 +336,9 @@ function Install-App {
     }
     elseif ($appType -eq "direct") {
         return Install-AppViaDirect -App $App -StatusLabel $StatusLabel -LogBox $LogBox
+    }
+    elseif ($appType -eq "command") {
+        return Install-AppViaCommand -App $App -StatusLabel $StatusLabel -LogBox $LogBox
     }
     else {
         Write-Log "Unknown app type: $appType" "ERROR"
@@ -340,7 +420,11 @@ foreach ($app in $AppList) {
     $checkbox.Size = New-Object System.Drawing.Size(520, 25)
 
     # Add type indicator to checkbox text
-    $typeIndicator = if ($app.Type -eq "direct") { "[Direct DL]" } else { "[Winget]" }
+    $typeIndicator = switch ($app.Type) {
+        "direct" { "[Direct DL]" }
+        "command" { "[Command]" }
+        default { "[Winget]" }
+    }
     $checkbox.Text = "$typeIndicator $($app.Name) - $($app.Description)"
 
     $checkbox.Tag = $app
