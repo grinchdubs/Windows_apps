@@ -51,6 +51,7 @@ $AppList = @(
     @{Name="duckyPad Configurator"; Type="direct"; DownloadURL="https://github.com/duckyPad/duckyPad-Configurator/releases/download/3.4.0/duckypad_config_3.4.0_win10_x64.zip"; InstallerType="zip"; SilentArgs=""; Description="Configuration tool for duckyPad macropad"},
     @{Name="duckyPad Autoswitcher"; Type="direct"; DownloadURL="https://github.com/duckyPad/duckyPad-Profile-Autoswitcher/releases/download/1.1.0/duckypad_autoprofile_1.1.0_win10_x64.zip"; InstallerType="zip"; SilentArgs=""; Description="Auto profile switching for duckyPad"},
     @{Name="NVIDIA App"; Type="direct"; DownloadURL="https://us.download.nvidia.com/nvapp/client/11.0.5.420/NVIDIA_app_v11.0.5.420.exe"; InstallerType="exe"; SilentArgs="/s /noreboot"; Description="NVIDIA driver and settings manager"},
+    @{Name="Cobian Backup"; Type="direct"; DownloadURL="http://files.cobiansoft.com/programz/cbSetup.exe"; InstallerType="exe"; SilentArgs="/VERYSILENT /SUPPRESSMSGBOXES"; Description="File and directory backup utility"},
     @{Name="WSL"; Type="command"; Command="wsl --install --no-distribution"; Description="Windows Subsystem for Linux (no distro)"},
 
     # Remote Access
