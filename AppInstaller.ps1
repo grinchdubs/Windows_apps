@@ -141,7 +141,7 @@ function Install-AppViaWinget {
 
     try {
         # Run winget install
-        $process = Start-Process -FilePath "winget" -ArgumentList "install --id $appID --silent --accept-package-agreements --accept-source-agreements" -Wait -NoNewWindow -PassThru
+        $process = Start-Process -FilePath "winget" -ArgumentList "install --id $appID --exact --silent --disable-interactivity --accept-package-agreements --accept-source-agreements" -Wait -NoNewWindow -PassThru
 
         if ($process.ExitCode -eq 0) {
             Write-Log "$appName installed successfully" "SUCCESS"
