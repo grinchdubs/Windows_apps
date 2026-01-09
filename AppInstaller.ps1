@@ -31,6 +31,7 @@ $AppList = @(
     @{Name="Telegram"; Type="winget"; ID="Telegram.TelegramDesktop"; Description="Messaging app"},
     @{Name="Tailscale"; Type="winget"; ID="tailscale.tailscale"; Description="VPN mesh network"},
     @{Name="VLC Media Player"; Type="winget"; ID="VideoLAN.VLC"; Description="Media player"},
+    @{Name="Spotify"; Type="winget"; ID="Spotify.Spotify"; Description="Music streaming service"},
     @{Name="FFmpeg"; Type="winget"; ID="Gyan.FFmpeg"; Description="Multimedia framework"},
     @{Name="HandBrake"; Type="winget"; ID="HandBrake.HandBrake"; Description="Video transcoder"},
     @{Name="Upscayl"; Type="winget"; ID="Upscayl.Upscayl"; Description="AI image upscaler"},
