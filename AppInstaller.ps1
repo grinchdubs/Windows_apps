@@ -25,6 +25,7 @@ $AppList = @(
     @{Name="Visual Studio Code"; Type="winget"; ID="Microsoft.VisualStudioCode"; Description="Code editor"},
     @{Name="Sublime Text"; Type="winget"; ID="SublimeHQ.SublimeText.4"; Description="Text editor"},
     @{Name="Notion"; Type="winget"; ID="Notion.Notion"; Description="Productivity and notes"},
+    @{Name="Notion Calendar"; Type="winget"; ID="Notion.NotionCalendar"; Description="Calendar and scheduling app"},
     @{Name="Firefox"; Type="winget"; ID="Mozilla.Firefox"; Description="Web browser"},
     @{Name="Discord"; Type="winget"; ID="Discord.Discord"; Description="Chat platform"},
     @{Name="Telegram"; Type="winget"; ID="Telegram.TelegramDesktop"; Description="Messaging app"},
