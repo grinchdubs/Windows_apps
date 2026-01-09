@@ -20,6 +20,7 @@ $AppList = @(
     @{Name="TouchDesigner"; Type="direct"; DownloadURL="https://download.derivative.ca/TouchDesigner.2023.12480.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="Visual development platform"},
     @{Name="Inkscape"; Type="winget"; ID="Inkscape.Inkscape"; Description="Vector graphics editor"},
     @{Name="Blender"; Type="winget"; ID="BlenderFoundation.Blender"; Description="3D creation suite"},
+    @{Name="Bambu Studio"; Type="winget"; ID="Bambulab.Bambustudio"; Description="3D printing slicer for Bambu Lab printers"},
     @{Name="Affinity"; Type="winget"; ID="Canva.Affinity"; Description="Graphic design, photo-editing and publishing suite"},
     @{Name="Visual Studio Code"; Type="winget"; ID="Microsoft.VisualStudioCode"; Description="Code editor"},
     @{Name="Sublime Text"; Type="winget"; ID="SublimeHQ.SublimeText.4"; Description="Text editor"},
