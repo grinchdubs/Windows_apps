@@ -20,6 +20,7 @@ $AppList = @(
     @{Name="TouchDesigner"; Type="direct"; DownloadURL="https://download.derivative.ca/TouchDesigner.2023.12480.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="Visual development platform"},
     @{Name="Inkscape"; Type="winget"; ID="Inkscape.Inkscape"; Description="Vector graphics editor"},
     @{Name="Blender"; Type="winget"; ID="BlenderFoundation.Blender"; Description="3D creation suite"},
+    @{Name="Affinity"; Type="winget"; ID="Canva.Affinity"; Description="Graphic design, photo-editing and publishing suite"},
     @{Name="Visual Studio Code"; Type="winget"; ID="Microsoft.VisualStudioCode"; Description="Code editor"},
     @{Name="Sublime Text"; Type="winget"; ID="SublimeHQ.SublimeText.4"; Description="Text editor"},
     @{Name="Notion"; Type="winget"; ID="Notion.Notion"; Description="Productivity and notes"},
@@ -41,6 +42,12 @@ $AppList = @(
 
     # System Tools
     @{Name="HWiNFO"; Type="winget"; ID="REALiX.HWiNFO"; Description="Hardware information and monitoring"},
+    @{Name="Everything"; Type="winget"; ID="voidtools.Everything"; Description="Fast file and folder search tool"},
+    @{Name="Rainmeter"; Type="winget"; ID="Rainmeter.Rainmeter"; Description="Desktop customization tool"},
+    @{Name="X-Mouse Button Control"; Type="winget"; ID="Highresolution.X-MouseButtonControl"; Description="Mouse button remapping tool"},
+    @{Name="duckyPad Configurator"; Type="direct"; DownloadURL="https://github.com/duckyPad/duckyPad-Configurator/releases/download/3.4.0/duckypad_config_3.4.0_win10_x64.zip"; InstallerType="zip"; SilentArgs=""; Description="Configuration tool for duckyPad macropad"},
+    @{Name="duckyPad Autoswitcher"; Type="direct"; DownloadURL="https://github.com/duckyPad/duckyPad-Profile-Autoswitcher/releases/download/1.1.0/duckypad_autoprofile_1.1.0_win10_x64.zip"; InstallerType="zip"; SilentArgs=""; Description="Auto profile switching for duckyPad"},
+    @{Name="NVIDIA App"; Type="direct"; DownloadURL="https://us.download.nvidia.com/nvapp/client/11.0.5.420/NVIDIA_app_v11.0.5.420.exe"; InstallerType="exe"; SilentArgs="/s /noreboot"; Description="NVIDIA driver and settings manager"},
     @{Name="WSL"; Type="command"; Command="wsl --install --no-distribution"; Description="Windows Subsystem for Linux (no distro)"},
 
     # Remote Access
@@ -55,6 +62,7 @@ $AppList = @(
     # Networking & File Sharing
     @{Name="Angry IP Scanner"; Type="winget"; ID="angryziber.AngryIPScanner"; Description="Network scanner"},
     @{Name="LocalSend"; Type="winget"; ID="LocalSend.LocalSend"; Description="Local network file sharing"},
+    @{Name="Syncthing"; Type="winget"; ID="Syncthing.Syncthing"; Description="Continuous file synchronization"},
 
     # Hardware & Drivers
     @{Name="Azure Kinect SDK"; Type="direct"; DownloadURL="https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="Azure Kinect sensor drivers and SDK"}
