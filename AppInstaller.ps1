@@ -42,6 +42,8 @@ $AppList = @(
 
     # System Tools
     @{Name="HWiNFO"; Type="winget"; ID="REALiX.HWiNFO"; Description="Hardware information and monitoring"},
+    @{Name="Rainmeter"; Type="winget"; ID="Rainmeter.Rainmeter"; Description="Desktop customization tool"},
+    @{Name="NVIDIA App"; Type="direct"; DownloadURL="https://us.download.nvidia.com/nvapp/client/11.0.5.420/NVIDIA_app_v11.0.5.420.exe"; InstallerType="exe"; SilentArgs="/s /noreboot"; Description="NVIDIA driver and settings manager"},
     @{Name="WSL"; Type="command"; Command="wsl --install --no-distribution"; Description="Windows Subsystem for Linux (no distro)"},
 
     # Remote Access
