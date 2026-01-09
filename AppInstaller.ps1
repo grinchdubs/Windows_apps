@@ -42,6 +42,7 @@ $AppList = @(
 
     # System Tools
     @{Name="HWiNFO"; Type="winget"; ID="REALiX.HWiNFO"; Description="Hardware information and monitoring"},
+    @{Name="Everything"; Type="winget"; ID="voidtools.Everything"; Description="Fast file and folder search tool"},
     @{Name="Rainmeter"; Type="winget"; ID="Rainmeter.Rainmeter"; Description="Desktop customization tool"},
     @{Name="X-Mouse Button Control"; Type="winget"; ID="Highresolution.X-MouseButtonControl"; Description="Mouse button remapping tool"},
     @{Name="duckyPad Configurator"; Type="direct"; DownloadURL="https://github.com/duckyPad/duckyPad-Configurator/releases/download/3.4.0/duckypad_config_3.4.0_win10_x64.zip"; InstallerType="zip"; SilentArgs=""; Description="Configuration tool for duckyPad macropad"},
