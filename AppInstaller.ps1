@@ -56,6 +56,7 @@ $AppList = @(
     # Networking & File Sharing
     @{Name="Angry IP Scanner"; Type="winget"; ID="angryziber.AngryIPScanner"; Description="Network scanner"},
     @{Name="LocalSend"; Type="winget"; ID="LocalSend.LocalSend"; Description="Local network file sharing"},
+    @{Name="Syncthing"; Type="winget"; ID="Syncthing.Syncthing"; Description="Continuous file synchronization"},
 
     # Hardware & Drivers
     @{Name="Azure Kinect SDK"; Type="direct"; DownloadURL="https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe"; InstallerType="exe"; SilentArgs="/SILENT"; Description="Azure Kinect sensor drivers and SDK"}
